@@ -170,15 +170,6 @@
     <None Include="Resources\beauty_logo.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="image\плюс40.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="image\ред40.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="image\минус40.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>

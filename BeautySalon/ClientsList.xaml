@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BeautySalon"
         mc:Ignorable="d"
-        Title="Список клиентов" Height="450" Width="800">
+        Title="Список клиентов" Height="450" Width="800" Margin="10,10,0,0">
     <Grid>
 
         <Grid.RowDefinitions>
@@ -36,33 +36,33 @@
 
             <WrapPanel Grid.Column="1">
 
-                <TextBlock Margin="10,0,0,10" VerticalAlignment="Center">Имя:</TextBlock>
-                <TextBox x:Name="tbI" Margin="10,0,0,10" VerticalAlignment="Center" Width="100"></TextBox>
+                <TextBlock Margin="10,10,0,0" VerticalAlignment="Center">Имя:</TextBlock>
+                <TextBox x:Name="tbI" Margin="10,10,0,0" VerticalAlignment="Center" Width="100"></TextBox>
 
-                <TextBlock Margin="10,0,0,10" VerticalAlignment="Center">Фамииля:</TextBlock>
-                <TextBox x:Name="tbF" Margin="10,0,0,10" VerticalAlignment="Center" Width="100"></TextBox>
+                <TextBlock Margin="10,10,0,0" VerticalAlignment="Center">Фамииля:</TextBlock>
+                <TextBox x:Name="tbF" Margin="10,10,0,0" VerticalAlignment="Center" Width="100"></TextBox>
 
-                <TextBlock Margin="10,0,0,10" VerticalAlignment="Center">Отчество:</TextBlock>
-                <TextBox x:Name="tbO" Margin="10,0,0,10" VerticalAlignment="Center" Width="100"></TextBox>
+                <TextBlock Margin="10,10,0,0" VerticalAlignment="Center">Отчество:</TextBlock>
+                <TextBox x:Name="tbO" Margin="10,10,0,0" VerticalAlignment="Center" Width="100"></TextBox>
 
-                <TextBlock Margin="10,0,0,10" VerticalAlignment="Center">Пол:</TextBlock>
-                <ComboBox x:Name="cbGender" Margin="10,0,0,10" VerticalAlignment="Center" Width="80" >
+                <TextBlock Margin="10,10,0,0" VerticalAlignment="Center">Пол:</TextBlock>
+                <ComboBox x:Name="cbGender" Margin="10,10,0,0" VerticalAlignment="Center" Width="80" >
                     <ComboBoxItem IsSelected="True">Любой</ComboBoxItem>
                     <ComboBoxItem>Мужской</ComboBoxItem>
                     <ComboBoxItem>Женский</ComboBoxItem>
                 </ComboBox>
 
-                <TextBlock Margin="10,0,0,10" VerticalAlignment="Center">Электронная почта:</TextBlock>
-                <TextBox x:Name="tbEmail" Margin="10,0,0,10" VerticalAlignment="Center" Width="100"></TextBox>
+                <TextBlock Margin="10,10,0,10" VerticalAlignment="Center">Электронная почта:</TextBlock>
+                <TextBox x:Name="tbEmail" Margin="10,10,0,10" VerticalAlignment="Center" Width="100"></TextBox>
 
-                <TextBlock Margin="10,0,0,10" VerticalAlignment="Center">Телефон:</TextBlock>
-                <TextBox x:Name="tbPhon" Margin="10,0,0,10" VerticalAlignment="Center" Width="100"></TextBox>
+                <TextBlock Margin="10,10,0,10" VerticalAlignment="Center">Телефон:</TextBlock>
+                <TextBox x:Name="tbPhon" Margin="10,10,0,10" VerticalAlignment="Center" Width="100"></TextBox>
 
             </WrapPanel>
 
         </Grid>
 
-        <DataGrid Grid.Row="1" x:Name="dgClient" ColumnWidth="Auto" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" Height="310" Width="794" SelectionChanged="dgClient_SelectionChanged">
+        <DataGrid Grid.Row="1" x:Name="dgClient" ColumnWidth="Auto" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" SelectionChanged="dgClient_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Идентификатор" Binding="{Binding ID}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Пол" Binding="{Binding GenderCode}"></DataGridTextColumn>
@@ -75,7 +75,5 @@
                 <DataGridTextColumn Header="Дата добавления" Binding="{Binding RegistrationDate, StringFormat={}{0:dd MMM yyyy hh MM ss}}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-
-
     </Grid>
 </Window>
