@@ -21,6 +21,7 @@
             <Setter Property="VerticalGridLinesBrush" Value="#FFFF4A6D"></Setter>
         </Style>
         <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Padding" Value="5,0,0,0"></Setter>
             <Setter Property="BorderThickness" Value="1"></Setter>
             <Setter Property="Background" Value="#FFFFE4FF"></Setter>
             <Setter Property="BorderBrush" Value="#FFFF4A6D"></Setter>

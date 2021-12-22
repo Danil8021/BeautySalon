@@ -24,8 +24,7 @@ namespace BeautySalon
         BeautySalonEntities context;
         int page = 0;
         int countRow = 0;
-        
-
+ 
         public MainWindow()
         {
             InitializeComponent();
