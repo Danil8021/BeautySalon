@@ -9,59 +9,52 @@
         FontSize="12"
         Icon="Resources\beauty_logo.ico"
         Title="Список клиентов" Height="450" Width="800" Margin="10,10,0,0" MinWidth="680" MinHeight="300">
-    <Grid>
+    <Grid Background="#FFFFE4FF">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="70"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
+        <Menu Grid.Row="0" Background="White" BorderBrush="White">
+            <MenuItem Header="Добавить" x:Name="btnAdd" Margin="5,0,0,0" Click="btnAdd_Click" ></MenuItem>
+            <MenuItem Header="Удалить" x:Name="btnDel" Margin="5,0,0,0" Click="btnDel_Click" IsEnabled="False"></MenuItem>
+            <MenuItem Header="Редактировать" x:Name="btnEdit" Margin="5,0,0,0" Click="btnEdit_Click" IsEnabled="False"></MenuItem>
+            <MenuItem Header="Фильтры" Margin="5,0,0,0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="0,0,0,0" Width="110">Имя:</TextBlock>
+                    <TextBox x:Name="tbI" Margin="0,0,0,0" Width="100" TextChanged="tbI_TextChanged"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="0,0,0,0" Width="110">Фамилия:</TextBlock>
+                    <TextBox x:Name="tbF" Margin="0,0,0,0" Width="100" TextChanged="tbF_TextChanged"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="0,0,0,0" Width="110" >Отчество:</TextBlock>
+                    <TextBox x:Name="tbO" Margin="0,0,0,0" Width="100" TextChanged="tbO_TextChanged"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="0,0,0,0" Width="110" >Пол:</TextBlock>
+                    <ComboBox x:Name="cbGender" Margin="0,0,0,0" Height="20" Width="100"  SelectionChanged="cbGender_SelectionChanged" >
+                        <ComboBoxItem>Любой</ComboBoxItem>
+                        <ComboBoxItem>Мужской</ComboBoxItem>
+                        <ComboBoxItem>Женский</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="0,0,0,0" Width="110">Электронная почта:</TextBlock>
+                    <TextBox x:Name="tbEmail" Margin="0,0,0,0" Width="100" TextChanged="tbEmail_TextChanged"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="0,0,0,0" Width="110" >Телефон:</TextBlock>
+                    <TextBox x:Name="tbPhone" Margin="0,0,0,0" Width="100" TextChanged="tbPhone_TextChanged"></TextBox>
+                </StackPanel>
+                <Button x:Name="btnReset" Width="210" Click="btnReset_Click">Сбросить</Button>
+            </MenuItem>
+        </Menu>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="160"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-
-            <StackPanel Grid.Column="0" Orientation="Horizontal">
-
-                <Button x:Name="btnAdd" Width="40" Height="40" Margin="10,0,0,0" Click="btnAdd_Click">Д</Button>
-
-                <Button x:Name="btnDel" Width="40" Height="40" Margin="10,0,0,0" Click="btnDel_Click" IsEnabled="False">У</Button>
-
-                <Button x:Name="btnEdit" Width="40" Height="40" Margin="10,0,0,0" Click="btnEdit_Click" IsEnabled="False">Р</Button>
-            </StackPanel>
-
-            <WrapPanel Grid.Column="1">
-
-                <TextBlock Margin="10,10,0,0" VerticalAlignment="Center">Имя:</TextBlock>
-                <TextBox x:Name="tbI" Margin="10,10,0,0" VerticalAlignment="Center" Width="100" TextChanged="tbI_TextChanged"></TextBox>
-
-                <TextBlock Margin="10,10,0,0" VerticalAlignment="Center">Фамииля:</TextBlock>
-                <TextBox x:Name="tbF" Margin="10,10,0,0" VerticalAlignment="Center" Width="100" TextChanged="tbF_TextChanged"></TextBox>
-
-                <TextBlock Margin="10,10,0,0" VerticalAlignment="Center">Отчество:</TextBlock>
-                <TextBox x:Name="tbO" Margin="10,10,0,0" VerticalAlignment="Center" Width="100" TextChanged="tbO_TextChanged"></TextBox>
-
-                <TextBlock Margin="10,10,0,0" VerticalAlignment="Center">Пол:</TextBlock>
-                <ComboBox x:Name="cbGender" Margin="10,10,0,0" VerticalAlignment="Center" Width="80" SelectionChanged="cbGender_SelectionChanged" >
-                    <ComboBoxItem>Любой</ComboBoxItem>
-                    <ComboBoxItem>Мужской</ComboBoxItem>
-                    <ComboBoxItem>Женский</ComboBoxItem>
-                </ComboBox>
-
-                <TextBlock Margin="10,10,0,10" VerticalAlignment="Center">Электронная почта:</TextBlock>
-                <TextBox x:Name="tbEmail" Margin="10,10,0,10" VerticalAlignment="Center" Width="100" TextChanged="tbEmail_TextChanged"></TextBox>
-
-                <TextBlock Margin="10,10,0,10" VerticalAlignment="Center">Телефон:</TextBlock>
-                <TextBox x:Name="tbPhone" Margin="10,10,0,10" VerticalAlignment="Center" Width="100" TextChanged="tbPhone_TextChanged"></TextBox>
-
-            </WrapPanel>
-
-        </Grid>
-
-        <DataGrid Grid.Row="1" x:Name="dgClient" ColumnWidth="*" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" Background="White" SelectionChanged="dgClient_SelectionChanged">
+        <DataGrid Grid.Row="1" x:Name="dgClient" ColumnWidth="*" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" Background="#FFFFE4FF" SelectionChanged="dgClient_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Идентификатор" Binding="{Binding ID}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Пол" Binding="{Binding Gender.Name}"></DataGridTextColumn>
@@ -74,11 +67,17 @@
                 <DataGridTextColumn Header="Дата добавления" Binding="{Binding RegistrationDate, StringFormat={}{0:dd-MM-yyyy hh:MM:ss}}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <DockPanel Grid.Row="2">
+        <DockPanel Grid.Row="2" Background="White">
 
             <Button x:Name="Back"  Margin="10,0,0,0" Height="20" Width="80" Click="Back_Click" >Назад</Button>
 
-            <ComboBox x:Name="cbPage" Margin="10,0,0,0" Width="50" Height="20"  SelectionChanged="cbPage_SelectionChanged">
+            <ComboBox x:Name="cbPage" Margin="10,0,0,0" Width="50" Height="20"  SelectionChanged="cbPage_SelectionChanged" BorderBrush="White">
+                <ComboBox.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </ComboBox.Background>
                 <ComboBoxItem>Все</ComboBoxItem>
                 <ComboBoxItem>10</ComboBoxItem>
                 <ComboBoxItem>50</ComboBoxItem>

@@ -220,5 +220,15 @@ namespace BeautySalon
             var list = new ListOfVisit(context, Client);
             list.ShowDialog();
         }
+
+        private void btnReset_Click(object sender, RoutedEventArgs e)
+        {
+            tbI.Text = "";
+            tbF.Text = "";
+            tbO.Text = "";
+            cbGender.SelectedIndex = 0;
+            tbPhone.Text = "";
+            tbEmail.Text = "";
+        }
     }
 }

@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BeautySalon"
         mc:Ignorable="d"
+        Icon="Resources\beauty_logo.ico"
         Title="Список посещений" Height="450" Width="450" MinHeight="300" MinWidth="450">
     <Grid>
         <ListView x:Name="LVVisits">

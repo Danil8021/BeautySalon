@@ -3,4 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:BeautySalon"
              StartupUri="ClientsList.xaml">
+    <Application.Resources>
+        <Style TargetType="MenuItem">
+            <Setter Property="Background" Value="White"></Setter>
+            <Setter Property="BorderBrush" Value="#FFFFE4FF"></Setter>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="White"></Setter>
+            <Setter Property="BorderBrush" Value="#FFFFE4FF"></Setter>
+        </Style>
+    </Application.Resources>
 </Application>
