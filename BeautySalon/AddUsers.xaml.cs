@@ -31,8 +31,10 @@ namespace BeautySalon
             this.context = context;
             this.DataContext = Client;
             this.a = a;
+
             if (a)
             {
+                dpBirthday.SelectedDate = DateTime.Now;
                 tBlockId.Visibility = Visibility.Hidden;
                 tBoxId.Visibility = Visibility.Hidden;
             }
@@ -51,7 +53,7 @@ namespace BeautySalon
             if (file.CheckFileExists)
             {
                 string fileName = file.FileName;
-                FileInfo i = new FileInfo(fileName);
+                FileInfo i = new FileInfo(fileName); //C:\Users\Дмитрий\Source\Repos\Danil8021\BeautySalon\BeautySalon\Клиенты\
                 string path = $@"d:\users\is12329\Desktop\BeautySalon\BeautySalon\Клиенты\{i.Name}";
                 if (!File.Exists(path))
                 {

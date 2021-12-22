@@ -23,8 +23,8 @@ namespace BeautySalon
 
         BeautySalonEntities context;
         int page = 0;
-        int countList = 0;
-
+        int countRow = 0;
+        
 
         public MainWindow()
         {
@@ -36,14 +36,15 @@ namespace BeautySalon
         
         public void ShowTClient()
         {
+
             int genderIndex = 0;
             int pageItem = 0;
             if (cbGender.SelectedIndex == 0 && cbPage.SelectedIndex == 0)
             {
                 var sel0 = (from c in context.Client where c.Email.StartsWith(tbEmail.Text) && c.FirstName.StartsWith(tbI.Text) && c.LastName.StartsWith(tbF.Text) && c.Patronymic.StartsWith(tbO.Text) && c.Phone.StartsWith(tbPhone.Text) orderby c.ID select c).ToList();
                 dgClient.ItemsSource = sel0;
-                countList = sel0.Count;
-                tbCountPage.Text = $"{sel0.Count} из {countList}";
+                countRow = sel0.Count;
+                tbCountPage.Text = $"{sel0.Count} из {countRow}";
                 return;
             }
             switch(cbGender.SelectedIndex)
@@ -78,19 +79,20 @@ namespace BeautySalon
             {
                 var selG = (from c in context.Client where c.GenderCode.StartsWith(genderIndex.ToString()) && c.Email.StartsWith(tbEmail.Text) && c.FirstName.StartsWith(tbI.Text) && c.LastName.StartsWith(tbF.Text) && c.Patronymic.StartsWith(tbO.Text) && c.Phone.StartsWith(tbPhone.Text) orderby c.ID select c).ToList();
                 dgClient.ItemsSource = selG;
-                tbCountPage.Text = $"{selG.Count} из {countList}";
+                tbCountPage.Text = $"{selG.Count} из {selG.Count}";
                 return;
             }
             if (cbGender.SelectedIndex == 0 && cbPage.SelectedIndex != 0)
             {
                 var selP = (from c in context.Client where c.Email.StartsWith(tbEmail.Text) && c.FirstName.StartsWith(tbI.Text) && c.LastName.StartsWith(tbF.Text) && c.Patronymic.StartsWith(tbO.Text) && c.Phone.StartsWith(tbPhone.Text) orderby c.ID select c).Skip(page).Take(pageItem).ToList();
                 dgClient.ItemsSource = selP;
-                tbCountPage.Text = $"{selP.Count} из {countList}";
+                tbCountPage.Text = $"{page + selP.Count} из {countRow}";
                 return;
             }
-            var sel = (from c in context.Client where c.GenderCode.StartsWith(genderIndex.ToString()) && c.Email.StartsWith(tbEmail.Text) && c.FirstName.StartsWith(tbI.Text) && c.LastName.StartsWith(tbF.Text) && c.Patronymic.StartsWith(tbO.Text) && c.Phone.StartsWith(tbPhone.Text) orderby c.ID select c).Skip(page).Take(pageItem).ToList();
-            dgClient.ItemsSource = sel;
-            tbCountPage.Text = $"{sel.Count} из {countList}";
+            var sel = (from c in context.Client where c.GenderCode.StartsWith(genderIndex.ToString()) && c.Email.StartsWith(tbEmail.Text) && c.FirstName.StartsWith(tbI.Text) && c.LastName.StartsWith(tbF.Text) && c.Patronymic.StartsWith(tbO.Text) && c.Phone.StartsWith(tbPhone.Text) orderby c.ID select c).ToList();
+            countRow = sel.Count;
+            dgClient.ItemsSource = sel.Skip(page).Take(pageItem);
+            tbCountPage.Text = $"{page + dgClient.Items.Count} из {countRow}";
         }
 
         private void dgClient_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -161,7 +163,7 @@ namespace BeautySalon
 
         private void Next_Click(object sender, RoutedEventArgs e)
         {
-            if (page == countList - dgClient.Items.Count)
+            if (page == countRow - dgClient.Items.Count)
             {
                 return;
             }

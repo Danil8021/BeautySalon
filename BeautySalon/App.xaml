@@ -4,6 +4,9 @@
              xmlns:local="clr-namespace:BeautySalon"
              StartupUri="ClientsList.xaml">
     <Application.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="BorderBrush" Value="#FFFF4A6D"></Setter>
+        </Style>
         <Style TargetType="MenuItem">
             <Setter Property="Background" Value="#FFFFE4FF"></Setter>
             <Setter Property="BorderBrush" Value="#FFFF4A6D"></Setter>
@@ -18,8 +21,9 @@
             <Setter Property="VerticalGridLinesBrush" Value="#FFFF4A6D"></Setter>
         </Style>
         <Style TargetType="DataGridColumnHeader">
-            <Setter Property="Background" Value="#FFFF4A6D"></Setter>
-            <Setter Property="BorderBrush" Value="#FFFFE4FF"></Setter>
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="Background" Value="#FFFFE4FF"></Setter>
+            <Setter Property="BorderBrush" Value="#FFFF4A6D"></Setter>
             <Setter Property="Height" Value="25"></Setter>
             <Setter Property="FontSize" Value="14"></Setter>
         </Style>

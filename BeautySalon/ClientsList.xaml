@@ -67,24 +67,17 @@
                 <DataGridTextColumn Header="Дата добавления" Binding="{Binding RegistrationDate, StringFormat={}{0:dd-MM-yyyy hh:MM:ss}}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <DockPanel Grid.Row="2" Background="White" HorizontalAlignment="Right" Width="792">
-
-            <Button x:Name="Back"  Margin="10,5,0,5" Height="20" Width="80" Click="Back_Click" >Назад</Button>
-
+        <StatusBar Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button  x:Name="Back" Margin="10,2,0,2" Height="20" Width="80" Click="Back_Click">Назад</Button>
             <ComboBox x:Name="cbPage" Margin="10,0,0,0" Width="50" Height="20"  SelectionChanged="cbPage_SelectionChanged">
                 <ComboBoxItem>Все</ComboBoxItem>
                 <ComboBoxItem>10</ComboBoxItem>
                 <ComboBoxItem>50</ComboBoxItem>
                 <ComboBoxItem>200</ComboBoxItem>
             </ComboBox>
-
             <TextBlock x:Name="tbCountPage" Margin="10,0,0,0" Width="80" Height="20" ></TextBlock>
-
-            <Button x:Name="Next" Margin="0,0,10,0" Width="80" Height="20" Click="Next_Click" DockPanel.Dock="Right" HorizontalAlignment="Right" >Вперёд</Button>
-
-        </DockPanel>
-
-        <Button x:Name="btnListOfVisit" Grid.Row="2" Width="120" Height="20" Click="btnListOfVisit_Click" HorizontalAlignment="Center" IsEnabled="False" >Список посещений</Button>
-
+            <Button x:Name="btnListOfVisit" Margin="10,0,0,0" Grid.Row="2" Width="120" Height="20" Click="btnListOfVisit_Click" HorizontalAlignment="Center" IsEnabled="False" >Список посещений</Button>
+            <Button x:Name="Next" Margin="0,0,0,0" Width="80" Height="20" Click="Next_Click" HorizontalAlignment="Right" >Вперёд</Button>
+        </StatusBar>
     </Grid>
 </Window>
