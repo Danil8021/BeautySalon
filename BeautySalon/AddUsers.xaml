@@ -9,7 +9,7 @@
         FontFamily="Tahoma"
         Icon="Resources\beauty_logo.ico"
         Title="Добавление" Height="450" Width="300" MinWidth="300" MinHeight="380">
-    <Grid>
+    <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0,1*"></ColumnDefinition>
             <ColumnDefinition Width="0,2*"></ColumnDefinition>

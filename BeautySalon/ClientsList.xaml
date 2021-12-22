@@ -9,12 +9,12 @@
         FontSize="12"
         Icon="Resources\beauty_logo.ico"
         Title="Список клиентов" Height="450" Width="800" Margin="10,10,0,0" MinWidth="680" MinHeight="300">
-    <Grid Background="#FFFFE4FF">
+    <Grid>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
 
         <Menu Grid.Row="0" Background="White" BorderBrush="White">
@@ -54,7 +54,7 @@
             </MenuItem>
         </Menu>
 
-        <DataGrid Grid.Row="1" x:Name="dgClient" ColumnWidth="*" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" Background="#FFFFE4FF" SelectionChanged="dgClient_SelectionChanged">
+        <DataGrid Grid.Row="1" x:Name="dgClient" ColumnWidth="*" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" SelectionChanged="dgClient_SelectionChanged" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Идентификатор" Binding="{Binding ID}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Пол" Binding="{Binding Gender.Name}"></DataGridTextColumn>
@@ -67,17 +67,11 @@
                 <DataGridTextColumn Header="Дата добавления" Binding="{Binding RegistrationDate, StringFormat={}{0:dd-MM-yyyy hh:MM:ss}}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <DockPanel Grid.Row="2" Background="White">
+        <DockPanel Grid.Row="2" Background="White" HorizontalAlignment="Right" Width="792">
 
-            <Button x:Name="Back"  Margin="10,0,0,0" Height="20" Width="80" Click="Back_Click" >Назад</Button>
+            <Button x:Name="Back"  Margin="10,5,0,5" Height="20" Width="80" Click="Back_Click" >Назад</Button>
 
-            <ComboBox x:Name="cbPage" Margin="10,0,0,0" Width="50" Height="20"  SelectionChanged="cbPage_SelectionChanged" BorderBrush="White">
-                <ComboBox.Background>
-                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
-                        <GradientStop Color="White" Offset="1"/>
-                    </LinearGradientBrush>
-                </ComboBox.Background>
+            <ComboBox x:Name="cbPage" Margin="10,0,0,0" Width="50" Height="20"  SelectionChanged="cbPage_SelectionChanged">
                 <ComboBoxItem>Все</ComboBoxItem>
                 <ComboBoxItem>10</ComboBoxItem>
                 <ComboBoxItem>50</ComboBoxItem>

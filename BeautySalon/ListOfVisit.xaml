@@ -8,7 +8,7 @@
         Icon="Resources\beauty_logo.ico"
         Title="Список посещений" Height="450" Width="450" MinHeight="300" MinWidth="450">
     <Grid>
-        <ListView x:Name="LVVisits">
+        <ListView x:Name="LVVisits" Background="White">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
