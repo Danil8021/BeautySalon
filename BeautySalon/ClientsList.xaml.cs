@@ -95,7 +95,9 @@ namespace BeautySalon
 
         private void dgClient_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+            btnEdit.IsEnabled = true;
+            btnDel.IsEnabled = true;
+            btnListOfVisit.IsEnabled = true;
         }
 
         private void cbGender_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -187,6 +189,7 @@ namespace BeautySalon
             context.Client.Add(newClient);
             var window = new AddUsers(context, newClient, true);
             window.ShowDialog();
+            ShowTClient();
         }
 
         private void btnDel_Click(object sender, RoutedEventArgs e)
@@ -208,6 +211,14 @@ namespace BeautySalon
             var Client = dgClient.SelectedItem as Client;
             var add = new AddUsers(context, Client, false);
             add.ShowDialog();
+            ShowTClient();
+        }
+
+        private void btnListOfVisit_Click(object sender, RoutedEventArgs e)
+        {
+            var Client = dgClient.SelectedItem as Client;
+            var list = new ListOfVisit(context, Client);
+            list.ShowDialog();
         }
     }
 }

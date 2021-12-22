@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
 using Microsoft.Win32;
+using System.Text.RegularExpressions;
+using System.Reflection;
 
 namespace BeautySalon
 {
@@ -41,16 +43,16 @@ namespace BeautySalon
             cBoxGender.ItemsSource = context.Gender.ToList();
         }
 
-        private void bAdd_Click(object sender, RoutedEventArgs e)
+        private void bAddImage_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog file = new OpenFileDialog();
-            file.Filter = "*.png, *.jpeg|*.png, *.jpeg";
+            file.Filter = "Image files (*.png;*.jpeg;*.jpg)|*.png;*.jpeg;*.jpg|All files (*.*)|*.*";
             file.ShowDialog();
-            if (file.FileName.Length != 0)
+            if (file.CheckFileExists)
             {
                 string fileName = file.FileName;
                 FileInfo i = new FileInfo(fileName);
-                string path = $@"C:\Users\Дмитрий\source\repos\GNEBeautySalon-master\GNEBeautySalon\Клиенты\{i.Name}";
+                string path = $@"d:\users\is12329\Desktop\BeautySalon\BeautySalon\Клиенты\{i.Name}";
                 if (!File.Exists(path))
                 {
                     i.CopyTo(path);
@@ -63,7 +65,81 @@ namespace BeautySalon
 
         private void bSave_Click(object sender, RoutedEventArgs e)
         {
+            if (cBoxGender.SelectedIndex == -1)
+            {
+                MessageBox.Show("Пол не указан.");
+            }
+            else
+            {
+                if (tBoxFirstName.Text == "")
+                {
+                    MessageBox.Show("Имя не указано.");
+                }
+                else
+                {
+                    if (tBoxLastName.Text == "")
+                    {
+                        MessageBox.Show("Фамилия не указана.");
+                    }
+                    else
+                    {
+                        if (tBoxPhone.Text == "")
+                        {
+                            MessageBox.Show("Телефон не указан.");
+                        }
+                        else
+                        {
+                            string pattern = @"\w+([-+.]*\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*";
+                            var email = tBoxEmail.Text.Trim().ToLowerInvariant();
+                            if (Regex.Match(email,pattern).Success || tBoxEmail.Text == "")
+                            {
+                                var client = (Client)this.DataContext;
+                                client.RegistrationDate = DateTime.Now;
+                                client.Birthday = (DateTime)dpBirthday.SelectedDate;
+                                context.SaveChanges();
+                                this.Close();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Неправельно введён адрес электронной почты");
+                                tBoxEmail.Text = "";
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
+        private void tBoxFirstName_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsLetter(e.Text,0))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tBoxLastName_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsLetter(e.Text, 0))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tBoxPatronymic_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsLetter(e.Text, 0))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tBoxPhone_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsNumber(e.Text,0) && e.Text != "+" && e.Text != "(" && e.Text != ")")
+            {
+                e.Handled = true;
+            }
         }
     }
 }

@@ -8,7 +8,7 @@
         FontSize="12"
         FontFamily="Tahoma"
         Icon="Resources\beauty_logo.ico"
-        Title="Добавление" Height="450" Width="400">
+        Title="Добавление" Height="450" Width="300" MinWidth="300" MinHeight="380">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0,1*"></ColumnDefinition>
@@ -34,19 +34,19 @@
         <ComboBox Grid.Row="1" Grid.Column="1" x:Name="cBoxGender" SelectedItem="{Binding Gender}" DisplayMemberPath="Name" Width="150" Height="20" Margin="0,0,0,0"/>
 
         <TextBlock Grid.Row="2" Height="20" HorizontalAlignment="Right" >Имя:</TextBlock>
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding FirstName}" x:Name="tBoxFirstName" Height="20" Width="150" Margin="0,0,0,0" MaxLength="50"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding FirstName}" x:Name="tBoxFirstName" Height="20" Width="150" Margin="0,0,0,0" MaxLength="50" PreviewTextInput="tBoxFirstName_PreviewTextInput"/>
 
         <TextBlock Grid.Row="3" Height="20" HorizontalAlignment="Right" >Фамилия:</TextBlock>
-        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding LastName}" x:Name="tBoxLastName" Width="150" Height="20" Margin="0,0,0,0" MaxLength="50"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding LastName}" x:Name="tBoxLastName" Width="150" Height="20" Margin="0,0,0,0" MaxLength="50" PreviewTextInput="tBoxLastName_PreviewTextInput"/>
 
         <TextBlock Grid.Row="4" Height="20" HorizontalAlignment="Right" >Отчество:</TextBlock>
-        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Patronymic}" x:Name="tBoxPatronymic" Width="150" Height="20" Margin="0,0,0,0" MaxLength="50"/>
+        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Patronymic}" x:Name="tBoxPatronymic" Width="150" Height="20" Margin="0,0,0,0" MaxLength="50" PreviewTextInput="tBoxPatronymic_PreviewTextInput"/>
 
         <TextBlock Grid.Row="5" Height="20" HorizontalAlignment="Right">Дата рождения:</TextBlock>
         <DatePicker Grid.Row="5" Grid.Column="1" x:Name="dpBirthday" SelectedDate="{Binding Birthday}" Width="150" Height="23"/>
 
         <TextBlock Grid.Row="6" Height="20" HorizontalAlignment="Right">Телефон:</TextBlock>
-        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Phone}" x:Name="tBoxPhone" Width="150" Height="20" Margin="0,0,0,0" MaxLength="20"/>
+        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Phone}" x:Name="tBoxPhone" Width="150" Height="20" Margin="0,0,0,0" MaxLength="20" PreviewTextInput="tBoxPhone_PreviewTextInput"/>
 
         <TextBlock Grid.Row="7" Height="20" HorizontalAlignment="Right" >Email:</TextBlock>
         <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding Email}" x:Name="tBoxEmail" Width="150" Height="20" Margin="0,0,0,0"/>
